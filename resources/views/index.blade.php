@@ -23,7 +23,7 @@
         @endif
 
         <div class="d-flex justify-content-between">
-            <form action="{{ route('index.index') }}" method="GET">
+            <form action="{{ route('index.index') }}" method="GET" class="col-10 col-md-6">
                 <div class="input-group">
                     <input type="text" name="name" placeholder="Name" class="form-control">
                     <input type="email" name="email" placeholder="email" class="form-control">
@@ -54,9 +54,9 @@
                             <td>{{ $contact->name }}</td>
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->contact }}</td>
-                            <td>
+                            <td class="d-flex justify-content-center grid column-gap-2">
                                  <a href="{{ route('contact.edit', ['id'=>$contact->id]) }}" class="btn btn-sm btn-warning">
-                                     <i class="bi bi-pencil"></i> Editar
+                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
 
                                 <form action="{{ route('contact.delete', ['id' => $contact->id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir?');">

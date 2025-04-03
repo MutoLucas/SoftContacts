@@ -33,6 +33,11 @@ class ContactController extends Controller
 
     public function showEditContact(String $id){
         $contact = Contact::find($id);
+
+        if(auth()->user()->id != $contact->user_id){
+            return redirect()->route('index.index')->with('error','You do not have permission to edit this contact');
+        }
+
         return view('contactEdit', ['contact'=>$contact]);
     }
 
@@ -46,6 +51,11 @@ class ContactController extends Controller
         }
 
         $contact = Contact::findOrFail($id);
+
+        if(auth()->user()->id != $contact->user_id){
+            return redirect()->route('index.index')->with('error','You do not have permission to edit this contact');
+        }
+
         $contact->update($dadosEdit);
 
         return redirect()->route('contact.edit', ['id'=>$id])->with('success','Contact update success');

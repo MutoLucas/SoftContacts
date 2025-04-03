@@ -31,7 +31,7 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Nome <span class="text-danger">*</span></label>
+                            <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="name" required autofocus>
                         </div>
 
@@ -42,14 +42,14 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="contact" class="form-label">Telefone <span class="text-danger">*</span></label>
+                            <label for="contact" class="form-label">Contact <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="contact" maxlength="9" required>
                             <div class="form-text">Enter the number without special characters (numbers only)</div>
                         </div>
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-save"></i> Salvar Contato
+                                <i class="bi bi-save"></i> Save Contact
                             </button>
                         </div>
                     </form>

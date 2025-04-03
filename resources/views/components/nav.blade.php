@@ -19,8 +19,6 @@
                          {{ auth()->user()->name }}
                      </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                         <li><a class="dropdown-item" href="">Perfil</a></li>
-                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <a href="{{ route('auth.logout') }}" class="dropdown-item">Logout</a>
                         </li>
