@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    Editar Contato
+                    Edit Contact
                 </div>
 
                 @if(Session()->has('error'))
@@ -33,12 +33,12 @@
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Nome</label>
+                            <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" name="name" value="{{ $contact->name }}" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Telefone</label>
+                            <label for="phone" class="form-label">Contact</label>
                             <input type="text" class="form-control" name="contact" value="{{ $contact->contact }}" required>
                         </div>
 
@@ -48,8 +48,8 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('index.index') }}" class="btn btn-secondary">Cancelar</a>
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <a href="{{ route('index.index') }}" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-success">Save</button>
                         </div>
                     </form>
                 </div>

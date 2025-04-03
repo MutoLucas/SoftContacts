@@ -22,4 +22,6 @@ Route::prefix('contact')->middleware(verifyAuth::class)->group(function (){
     Route::get('/edit/{id}', [ContactController::class, 'showEditContact'])->name('contact.edit');
 
     Route::put('/edit/contact/{id}', [ContactController::class, 'storeEditContact'])->name('contact.edit.save');
+
+    Route::delete('/delete/{id}', [ContactController::class, 'deleteContact'])->name('contact.delete');
 });

@@ -16,9 +16,9 @@ class ContactController extends Controller
         $dadosContact = $request->except('_token');
 
         if(Contact::where('email', $dadosContact['email'])->where('user_id', auth()->user()->id)->exists()){
-            return redirect()->back()->with('error','Já existe um contato com o email: '.$dadosContact['email'].' cadastrado');
+            return redirect()->back()->with('error','There is already an email contact: '.$dadosContact['email'].' registered');
         }else if(Contact::where('contact', $dadosContact['contact'])->where('user_id', auth()->user()->id)->exists()){
-            return redirect()->back()->with('error','Já existe um contato com o numero: '.$dadosContact['email'].' cadastrado');
+            return redirect()->back()->with('error','There is already an contact number: '.$dadosContact['email'].' registred');
         }else{
             Contact::create([
                 'user_id'=>auth()->user()->id,
@@ -27,7 +27,7 @@ class ContactController extends Controller
                 'contact'=>$dadosContact['contact']
             ]);
 
-            return redirect()->back()->with('success','Contato para o email: '.$dadosContact['email'].' cadastrado com sucesso');
+            return redirect()->back()->with('success','Email contact: '.$dadosContact['email'].' successfully registered');
         }
     }
 
@@ -49,5 +49,16 @@ class ContactController extends Controller
         $contact->update($dadosEdit);
 
         return redirect()->route('contact.edit', ['id'=>$id])->with('success','Contact update success');
+    }
+
+    public function deleteContact(String $id){
+        $contact = Contact::find($id);
+
+        if(auth()->user()->id != $contact->user_id){
+            return redirect()->route('index.index')->with('error','You do not have permission to delete this contact');
+        }
+
+        $contact->delete();
+        return redirect()->route('index.index')->with('success','contact successfully deleted');
     }
 }

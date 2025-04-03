@@ -5,7 +5,22 @@
 @section('content')
     <x-nav />
 
+
     <div class="container p-2">
+
+        @if(Session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="height: 60px">
+                <p>{{ Session('error') }}</p>
+                <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        @if(Session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="height: 60px">
+                 <p>{{ Session('success') }}</p>
+                <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
         <div class="d-flex justify-content-between">
             <form action="{{ route('index.index') }}" method="GET">
@@ -44,16 +59,21 @@
                                      <i class="bi bi-pencil"></i> Editar
                                 </a>
 
-                                <a href="" class="btn btn-sm btn-danger text-white">
-                                    <i class="bi bi-trash"></i> Delete
-                                </a>
+                                <form action="{{ route('contact.delete', ['id' => $contact->id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger text-white">
+                                        <i class="bi bi-trash"></i> Delete
+                                    </button>
+                                </form>
+
                             </td>
                         </tr>
                     @empty
                         <tr>
                             <td colspan="5" class="text-center py-4">
                                 <div class="alert alert-info mb-0">
-                                    Nenhum contato encontrado
+                                    No contact found
                                 </div>
                             </td>
                         </tr>

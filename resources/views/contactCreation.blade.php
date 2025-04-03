@@ -10,7 +10,7 @@
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">Adicionar Novo Contato</h4>
+                    <h4 class="mb-0">Add new Contact</h4>
                 </div>
                 <div class="card-body">
                     @if (Session()->has('success'))
@@ -44,7 +44,7 @@
                         <div class="mb-3">
                             <label for="contact" class="form-label">Telefone <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="contact" maxlength="9" required>
-                            <div class="form-text">Digite o número sem caracteres especiais (somente números)</div>
+                            <div class="form-text">Enter the number without special characters (numbers only)</div>
                         </div>
 
                         <div class="d-grid gap-2">
