@@ -40,12 +40,12 @@
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->contact }}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-info text-white">
-                                     <i class="bi bi-eye"></i> Ver
-                                 </a>
-
-                                 <a href="" class="btn btn-sm btn-warning">
+                                 <a href="{{ route('contact.edit', ['id'=>$contact->id]) }}" class="btn btn-sm btn-warning">
                                      <i class="bi bi-pencil"></i> Editar
+                                </a>
+
+                                <a href="" class="btn btn-sm btn-danger text-white">
+                                    <i class="bi bi-trash"></i> Delete
                                 </a>
                             </td>
                         </tr>

@@ -32,9 +32,4 @@ class IndexController extends Controller
 
         return view('index', ['contacts' => $contacts]);
     }
-
-
-    public function showIndexSearch(Rquest $request){
-        dd($request);
-    }
 }
