@@ -3,7 +3,7 @@
 @section('pageTitle','Login - SoftContacts')
 
 @section('content')
-<div class="vh-100 d-flex justify-content-center align-items-center">
+<div class="vh-100 d-flex justify-content-center align-items-center text-dark">
     <div class="container col-10 col-md-4 border border-light shadow-lg bg bg-light rounded-4 p-3">
         <h1 class="text-center fs-3 mb-0">Welcome to SoftContacts</h1>
         <div class="d-flex justify-content-center">
@@ -13,6 +13,13 @@
         @if(Session()->has('errorLogin'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert" style="height: 60px">
             <p>{{ Session('errorLogin') }}</p>
+            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        @if(Session()->has('successLogout'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="height: 60px">
+            <p>{{ Session('successLogout') }}</p>
             <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif

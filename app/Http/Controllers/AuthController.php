@@ -21,4 +21,11 @@ class AuthController extends Controller
         $request->session()->regenerate();
         return redirect()->route('index.index');
     }
+
+    public function logoutUser(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('auth.index')->with('successLogout','Session successfully logged out');
+    }
 }
