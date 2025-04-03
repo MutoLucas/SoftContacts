@@ -43,14 +43,14 @@ class ContactController extends Controller
 
     public function storeEditContact(Request $request, String $id){
         $dadosEdit = $request->except('_token','_method');
+        $contact = Contact::findOrFail($id);
 
-        if(Contact::where('email', $dadosEdit['email'])->where('user_id', auth()->user()->id)->exists()){
+        if(Contact::where('email', $dadosEdit['email'])->where('user_id', auth()->user()->id)->where('id', '!=', $contact->id)->exists()){
             return redirect()->back()->with('error','There is already a contact with this email registered');
-        }else if(Contact::where('contact', $dadosEdit['contact'])->where('user_id', auth()->user()->id)->exists()){
+        }else if(Contact::where('contact', $dadosEdit['contact'])->where('user_id', auth()->user()->id)->where('id', '!=', $contact->id)->exists()){
             return redirect()->back()->with('error','There is already a contact with this number contact registered');
         }
 
-        $contact = Contact::findOrFail($id);
 
         if(auth()->user()->id != $contact->user_id){
             return redirect()->route('index.index')->with('error','You do not have permission to edit this contact');
